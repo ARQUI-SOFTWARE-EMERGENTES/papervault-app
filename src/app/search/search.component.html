@@ -1,0 +1,15 @@
+<div class="bg-primary absolute transform -translate-x-1/2 -translate-y-1/2 p-12 pt-18 w-96 h-93 md:w-4/5 lg:w-3/4 xl:w-2/3 rounded-lg" style="top: 50%; left: 50%;">
+    <h1 class="text-left text-6xl ml-4">Search documents</h1>
+    <form class="mt-16 flex flex-col gap-12 justify-center items-center w-full">
+        <div class="flex gap-5 w-full">
+            <select id="search-term" formControlName="searchTerm" class="rounded-md h-12 w-1/3 pl-6">
+                <option value="" disabled selected>All documents</option>
+                <option value="term1">Articles</option>
+                <option value="term2">Conference papers</option>
+                <option value="term3">Book chapters</option>
+            </select>
+            <input type="text" id="search-category" formControlName="searchCategory" placeholder="Keywords" class="rounded-md h-12 w-2/3 pl-6">
+        </div>
+        <button type="submit" class="text-2xl bg-secondary rounded-md p-2 w-1/5 h-16 font-bold text-white">Search</button>
+    </form>
+</div>
