@@ -12,5 +12,5 @@ export const routes: Routes = [
     { path:'search', component: SearchComponent},
     { path:'upload', component: UploadComponent},
     { path:'upload-succesfully', component: UploadSuccesfullyComponent},
-    { path:'profile', component: ProfileComponent}
+    { path:'profile/:id', component: ProfileComponent}
 ];
