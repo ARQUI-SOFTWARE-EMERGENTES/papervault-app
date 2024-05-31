@@ -1,7 +1,7 @@
 <div class="flex flex-col justify-center items-center w-4/5 absolute left-1/2 -translate-x-1/2">
     <h1 class="text-left w-full text-4xl pt-16 pb-8 ">Upload Research</h1>
     <div class="border border-gray-400 bg-white rounded-lg p-6 w-full h-96 mx-auto">
-        <div class="border border-gray-400 border-dashed p-4 rounded-md text-center h-full">
+        <div *ngIf="!isUploaded; else successful" class="border border-gray-400 border-dashed p-4 rounded-md text-center h-full">
             <h2 class="text-4xl pt-20 pb-4 font-semibold">Drag file on this area</h2>
             <h2 class="text-3xl font-semibold">or</h2>
             <div class="flex justify-center">
@@ -10,9 +10,21 @@
                     computer</button>
             </div>
         </div>
+        <ng-template #successful>
+            <div class="flex flex-col justify-center items-center h-96">
+                <img src="https://cdn-icons-png.flaticon.com/512/4481/4481290.png" alt="succesfully" class="w-1/5 h-2/3">
+                <h1 class="text-3xl pt-14 pb-8">Research uploaded for review</h1>
+            </div>
+        </ng-template>
     </div>
-    <div class="w-full h-15 mx-auto flex justify-between items-center mt-5">
-        <button type="submit" class="text-2xl bg-secondary rounded-md text-white p-2 w-1/6 font-bold">Cancel</button>
+    <div *ngIf="!isUploaded; else successfulButtons" class="w-full h-15 mx-auto flex justify-between items-center mt-5">
+        <button type="submit" [routerLink]="['/search']" class="text-2xl bg-secondary rounded-md text-white p-2 w-1/6 font-bold">Cancel</button>
         <button type="submit" (click)="onUpload()" class="text-2xl bg-secondary rounded-md p-2 w-1/6 h-15 font-bold text-white" >Upload</button>
     </div>
+
+    <ng-template #successfulButtons>
+        <div class="w-full h-15 mx-auto flex justify-center items-center mt-5">
+            <button [routerLink]="['/search']" type="submit" class="text-2xl bg-secondary rounded-md text-white p-2 w-1/6 font-bold">Accept</button>
+        </div>
+    </ng-template>
 </div>
