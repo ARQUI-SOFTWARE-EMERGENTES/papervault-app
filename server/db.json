@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "nombre",
+      "lastName": "apellido",
+      "academicInstitution": "institucion",
+      "studyArea": "area",
+      "email": "correo"
+    }
+  ]
+}

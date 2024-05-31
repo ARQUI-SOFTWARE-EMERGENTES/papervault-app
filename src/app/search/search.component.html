@@ -1,0 +1,54 @@
+<div *ngIf="!isQuery; else results" class="bg-primary absolute transform -translate-x-1/2 -translate-y-1/2 p-12 pt-18 w-96 h-93 md:w-4/5 lg:w-3/4 xl:w-2/3 rounded-lg" style="top: 50%; left: 50%;">
+    <h1 class="text-left text-6xl ml-4">Search documents</h1>
+    <div class="mt-16 flex flex-col gap-12 justify-center items-center w-full">
+        <div class="flex gap-5 w-full">
+            <select id="search-term" class="rounded-md h-12 w-1/3 pl-6">
+                <option value="">All documents</option>
+                <option value="term1">Articles</option>
+                <option value="term2">Conference papers</option>
+                <option value="term3">Book chapters</option>
+            </select>
+            <input type="text" [(ngModel)]="query" placeholder="Keywords" class="rounded-md h-12 w-2/3 pl-6">
+        </div>
+        <button (click)="search()" type="submit" class="text-2xl bg-secondary rounded-md p-2 w-1/5 h-16 font-bold text-white">Search</button>
+    </div>
+</div>
+
+<ng-template #results>
+    <div class="flex flex-col m-12">
+        <p class=" text-xl">250214 results for</p>
+        <div class="flex gap-4 w-full mt-5">
+            <input type="text" [(ngModel)]="query" class="w-5/6 border-2 border-black rounded-md pl-6 h-10"/>
+            <button (click)="search()" class="w-1/6 bg-secondary text-white rounded-md h-10 font-bold text-xl">Search</button>
+        </div>
+        <div class="mt-5 flex gap-20">
+            <div class="flex flex-col gap-4">
+                <h2 class="text-4xl">Filters:</h2>
+                <h3 class="text-2xl">Year:</h3>
+                <hr class="bg-gray-500 h-0.5">
+                <h3 class="text-2xl">Document types:</h3>
+                <hr class="bg-gray-500 h-0.5">
+                <h3 class="text-2xl">Language:</h3>
+            </div>
+            <div class="w-full flex flex-col gap-5">
+                <div class="flex justify-between bg-tertiary w-full p-6 rounded-md border border-gray-500">
+                    <div class="flex gap-3 items-center">
+                        <p class="text-xl font-bold text-white">Sort by:</p>
+                        <select class="rounded-md h-10 w-28 bg-transparent text-white text-xl font-bold">
+                            <option value="relevance" class="text-black">Relevance</option>
+                            <option value="date" class="text-black">Date</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="bg-white w-full border rounded-md border-gray-500 p-8 flex flex-col gap-2 cursor-pointer" (click)="viewResearch('1')">
+                    <h4 class="text-2xl">Regional Smart City Development Focus: The South Korean National Strategic Smart City Program</h4>
+                    <p class="text-xl">Jung, Hyun-Sook</p>
+                    <p class="text-xl">Journal of Urban Technology</p>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</ng-template>
