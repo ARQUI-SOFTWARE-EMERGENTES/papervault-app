@@ -38,4 +38,8 @@ export class SearchComponent implements OnInit {
     });
   }
 
+  viewResearch(id: string) {
+    this.router.navigate(['/research', id]);
+  }
+
 }
