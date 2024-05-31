@@ -10,7 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
     HeaderComponent
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'papervault-app';

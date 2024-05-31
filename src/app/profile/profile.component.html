@@ -1,0 +1,116 @@
+<div class="flex justify-between items-start gap-8 ml-8">
+    <div class="w-3/4 pt-14">
+        <div *ngIf="!edit" class="1">
+            <div class="flex gap-4">
+                <div class="flex flex-col gap-1 w-full">
+                    <p class="text-xl">Name:</p>
+                    <p class="text-2xl">{{this.profileData.name}}</p>
+                </div>
+                <div class="flex flex-col gap-1 w-full">
+                    <p class="text-xl">Last Name:</p>
+                    <p class="text-2xl">{{this.profileData.lastName}}</p>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <div class="flex flex-col gap-1 w-full">
+                    <p class="text-xl">Academic institution:</p>
+                    <p class="text-2xl">{{this.profileData.academicInstitution}}</p>
+                </div>
+                <div class="flex flex-col gap-1 w-full">
+                    <p class="text-xl">Study area:</p>
+                    <p class="text-2xl">{{this.profileData.studyArea}}</p>
+                </div>
+            </div>
+            <div class="flex flex-col gap-1 w-full">
+                <p class="text-xl">Email:</p>
+                <p class="text-2xl">{{this.profileData.email}}</p>
+            </div>
+            <div class="w-2/3 h-15 mx-auto flex justify-center items-center mt-5">
+                <button type="button" (click)="toggleEdit()" class="text-2xl bg-secondary rounded-md p-2 w-1/6 h-15 font-bold text-white">Edit</button>
+            </div>
+        </div>
+        
+        <div  class="2" >
+            <form *ngIf="edit" (submit)="onSubmit()" #profileForm="ngForm">
+                <div class="flex gap-4">
+                    <div class="flex flex-col gap-1 w-full">
+                        <label for="name" class="text-2xl">Name</label>
+                        <input type="text" id="name" [(ngModel)]="this.profileData.name" [ngModelOptions]="{standalone: true}" class="rounded-md h-9 w-full pl-2">
+                    </div>
+                    <div class="flex flex-col gap-1 w-full">
+                        <label for="lastname" class="text-2xl">Last Name</label>
+                        <input type="text" id="lastname" [(ngModel)]="this.profileData.lastName" [ngModelOptions]="{standalone: true}" class="rounded-md h-9 w-full pl-2">
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="flex flex-col gap-1 w-full">
+                        <label for="academicI" class="text-2xl">Academic institution</label>
+                        <input type="text" id="academicI" [(ngModel)]="this.profileData.academicInstitution" [ngModelOptions]="{standalone: true}" class="rounded-md h-9 w-full pl-2">
+                    </div>
+                    <div class="flex flex-col gap-1 w-full">
+                        <label for="studyA" class="text-2xl">Study area</label>
+                        <input type="text" id="studyA" [(ngModel)]="this.profileData.studyArea" [ngModelOptions]="{standalone: true}" class="rounded-md h-9 w-full pl-2">
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label for="email" class="text-2xl">Email</label>
+                    <input type="email" id="email" [(ngModel)]="this.profileData.email" [ngModelOptions]="{standalone: true}" class="rounded-md h-9 w-full pl-2">
+                </div>
+                <div class="w-2/3 h-15 mx-auto flex justify-between items-center mt-5">
+                    <button type="submit" class="text-2xl bg-secondary rounded-md p-2 w-1/6 h-15 font-bold text-white">Save</button>
+                    <button type="button" (click)="toggleEdit()" class="text-2xl bg-secondary rounded-md p-2 w-1/6 h-15 font-bold text-white">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="mt-32 mr-64">
+        <button type="button" class="text-lg bg-secondary rounded-md px-4 py-2 font-bold text-white">
+            Go to My research >>
+        </button>
+    </div>
+</div>
+
+<div class="max-w-screen-sm mx-4">
+    <div class="flex flex-col">
+        <p class="text-lg">Approve researchs</p>
+        <div class="flex justify-between items-center pt-2">
+            <div>
+                <p>User 1</p>
+            </div>
+            <div>
+                <p>Title 1</p>
+            </div>
+            <div class="flex">
+                <button type="submit" class="text-sm bg-secondary rounded-md px-2 py-1 mr-2 font-bold text-white">Approve</button>
+                <button type="button" class="text-sm bg-secondary rounded-md px-2 py-1 mr-2 font-bold text-white">Decline</button>
+                <button type="button" class="text-sm bg-secondary rounded-md px-2 py-1 font-bold text-white">Download</button>
+            </div>
+        </div>
+        <div class="flex justify-between items-center pt-2">
+            <div>
+                <p>User 2</p>
+            </div>
+            <div>
+                <p>Title 2</p>
+            </div>
+            <div class="flex">
+                <button type="submit" class="text-sm bg-secondary rounded-md px-2 py-1 mr-2 font-bold text-white">Approve</button>
+                <button type="button" class="text-sm bg-secondary rounded-md px-2 py-1 mr-2 font-bold text-white">Decline</button>
+                <button type="button" class="text-sm bg-secondary rounded-md px-2 py-1 font-bold text-white">Download</button>
+            </div>
+        </div>
+        <div class="flex justify-between items-center pt-2">
+            <div>
+                <p>User 3</p>
+            </div>
+            <div>
+                <p>Title 3</p>
+            </div>
+            <div class="flex">
+                <button type="submit" class="text-sm bg-secondary rounded-md px-2 py-1 mr-2 font-bold text-white">Approve</button>
+                <button type="button" class="text-sm bg-secondary rounded-md px-2 py-1 mr-2 font-bold text-white">Decline</button>
+                <button type="button" class="text-sm bg-secondary rounded-md px-2 py-1 font-bold text-white">Download</button>
+            </div>
+        </div>
+    </div>
+</div>
