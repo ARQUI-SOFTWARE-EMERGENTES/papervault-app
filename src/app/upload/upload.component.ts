@@ -1,20 +1,26 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-upload',
   standalone: true,
-  imports: [],
+  imports: [
+    CommonModule,
+    RouterModule
+  ],
   templateUrl: './upload.component.html',
   styleUrl: './upload.component.css'
 })
 export class UploadComponent {
+  isUploaded: boolean
 
-  constructor(private router: Router) {}
+  constructor() {
+    this.isUploaded = false
+  }
 
   onUpload() {
-    // lógica de carga aquí
-    this.router.navigate(['/upload-succesfully']);
+    this.isUploaded = true
   }
 
 }
