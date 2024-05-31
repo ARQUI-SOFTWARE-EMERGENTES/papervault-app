@@ -5,6 +5,7 @@ import { SearchComponent } from './search/search.component';
 import { UploadComponent } from './upload/upload.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ResearchComponent } from './research/research.component';
+import { MyResearchComponent } from './my-research/my-research.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -13,5 +14,6 @@ export const routes: Routes = [
     { path:'upload', component: UploadComponent},
     { path:'profile/:id', component: ProfileComponent},
     { path: 'research/:id', component: ResearchComponent },
+    { path: 'my-research', component: MyResearchComponent },
     { path: '**', redirectTo: 'search'}
 ];
