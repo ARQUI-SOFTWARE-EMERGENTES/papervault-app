@@ -34,4 +34,18 @@ export class ResearchService {
         retry(2),
         catchError(this.handleError));
   }
+
+  getAll(): Observable<Research> {
+    return this.http.get<Research>(this.basePath, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
+  getById(id: any): Observable<Research> {
+    return this.http.get<Research>(`${this.basePath}/${id}`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
 }
