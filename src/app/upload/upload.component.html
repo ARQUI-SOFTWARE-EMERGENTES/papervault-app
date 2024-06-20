@@ -2,13 +2,23 @@
     <h1 class="text-left w-full text-4xl pt-16 pb-8 ">Upload Research</h1>
     <div class="border border-gray-400 bg-white rounded-lg p-6 w-full mx-auto">
         <div *ngIf="!isUploaded; else successful" class="flex flex-col gap-2">
+            <label for="journal" class="text-2xl">Journal</label>
+            <input id="journal" name="journal" type="text" required [(ngModel)]="researchData.journal" #journal="ngModel" class="w-full h-9 rounded-md p-2 border border-gray-400" />
+            <div *ngIf="myForm.submitted && journal.invalid" class="text-red-500">
+                Journal is required.
+            </div>
+            <label for="authors" class="text-2xl">Authors</label>
+            <input id="authors" name="authors" type="text" required [(ngModel)]="researchData.authors" #authors="ngModel" class="w-full h-9 rounded-md p-2 border border-gray-400" />
+            <div *ngIf="myForm.submitted && authors.invalid" class="text-red-500">
+                Authors is required.
+            </div>
             <label for="title" class="text-2xl">Title</label>
             <input id="title" name="title" type="text" required [(ngModel)]="researchData.title" #title="ngModel" class="w-full h-9 rounded-md p-2 border border-gray-400" />
             <div *ngIf="myForm.submitted && title.invalid" class="text-red-500">
                 Title is required.
             </div>
             <label for="abstract"  class="text-2xl">Abstract</label>
-            <textarea id="abstract" name="abstract" [(ngModel)]="researchData.abstractText" #abstract="ngModel" class="w-full h-32 rounded-md p-2 border border-gray-400" required></textarea>
+            <textarea id="abstract" name="abstract" [(ngModel)]="researchData.abstract" #abstract="ngModel" class="w-full h-32 rounded-md p-2 border border-gray-400" required></textarea>
             <div *ngIf="myForm.submitted && abstract.invalid" class="text-red-500">
                 Abstract is required.
             </div>
@@ -16,6 +26,47 @@
             <textarea id="content" name="content" [(ngModel)]="researchData.content" #content="ngModel" class="w-full h-64 rounded-md p-2 border border-gray-400" required></textarea>
             <div *ngIf="myForm.submitted && content.invalid" class="text-red-500">
                 Content is required.
+            </div>
+            <div class="flex gap-5">
+                <div class="flex flex-col gap-2">
+                    <label for="publishedDate" class="text-2xl">Published date</label>
+                    <input id="publishedDate" name="publishedDate" type="date" required [(ngModel)]="researchData.publishedDate" #publishedDate="ngModel" class="w-full h-9 rounded-md p-2 border border-gray-400" />
+                    <div *ngIf="myForm.submitted && publishedDate.invalid" class="text-red-500">
+                        Published date is required.
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label for="volume" class="text-2xl">Volume</label>
+                    <input id="volume" name="volume" type="text" required [(ngModel)]="researchData.volume" #volume="ngModel" class="w-full h-9 rounded-md p-2 border border-gray-400" />
+                    <div *ngIf="myForm.submitted && volume.invalid" class="text-red-500">
+                        Volume is required.
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label for="issue" class="text-2xl">Issue</label>
+                    <input id="issue" name="issue" type="text" required [(ngModel)]="researchData.issue" #issue="ngModel" class="w-full h-9 rounded-md p-2 border border-gray-400" />
+                    <div *ngIf="myForm.submitted && issue.invalid" class="text-red-500">
+                        Issue is required.
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label for="pages" class="text-2xl">Pages</label>
+                    <input id="pages" name="pages" type="text" required [(ngModel)]="researchData.pages" #pages="ngModel" class="w-full h-9 rounded-md p-2 border border-gray-400" />
+                    <div *ngIf="myForm.submitted && pages.invalid" class="text-red-500">
+                        Pages is required.
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label for="doi" class="text-2xl">Doi</label>
+                    <input id="doi" name="doi" type="text" required [(ngModel)]="researchData.doi" #doi="ngModel" class="w-full h-9 rounded-md p-2 border border-gray-400" />
+                    <div *ngIf="myForm.submitted && doi.invalid" class="text-red-500">
+                        Doi is required.
+                    </div>
+                </div>
             </div>
         </div>
         <ng-template #successful>

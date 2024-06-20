@@ -25,7 +25,7 @@
             <div class="w-full flex flex-col gap-5">
                 <div *ngFor="let research of researchs" class="bg-white w-full border rounded-md border-gray-500 p-8 flex flex-col gap-2 cursor-pointer" (click)="viewResearch(research.id)">
                     <h4 class="text-2xl">{{ research.title }}</h4>
-                    <p class="text-xl">{{ research.submissionDate }}</p>
+                    <p class="text-xl">{{ research.publishedDate }}</p>
                 </div>
             </div>
         </div>
