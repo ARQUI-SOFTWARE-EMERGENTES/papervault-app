@@ -1,30 +1,89 @@
-<div class="flex flex-col justify-center items-center w-4/5 absolute left-1/2 -translate-x-1/2">
+<form #myForm="ngForm" (ngSubmit)="uploadResearch(myForm)" class="flex flex-col justify-center items-center w-4/5 absolute left-1/2 -translate-x-1/2">
     <h1 class="text-left w-full text-4xl pt-16 pb-8 ">Upload Research</h1>
-    <div class="border border-gray-400 bg-white rounded-lg p-6 w-full h-96 mx-auto">
-        <div *ngIf="!isUploaded; else successful" class="border border-gray-400 border-dashed p-4 rounded-md text-center h-full">
-            <h2 class="text-4xl pt-20 pb-4 font-semibold">Drag file on this area</h2>
-            <h2 class="text-3xl font-semibold">or</h2>
-            <div class="flex justify-center">
-                <button type="button"
-                    class="mt-3 text-2xl bg-secondary rounded-md p-2 w-80 h-15 font-bold text-white">Search on the
-                    computer</button>
+    <div class="border border-gray-400 bg-white rounded-lg p-6 w-full mx-auto">
+        <div *ngIf="!isUploaded; else successful" class="flex flex-col gap-2">
+            <label for="journal" class="text-2xl">Journal</label>
+            <input id="journal" name="journal" type="text" required [(ngModel)]="researchData.journal" #journal="ngModel" class="w-full h-9 rounded-md p-2 border border-gray-400" />
+            <div *ngIf="myForm.submitted && journal.invalid" class="text-red-500">
+                Journal is required.
+            </div>
+            <label for="authors" class="text-2xl">Authors</label>
+            <input id="authors" name="authors" type="text" required [(ngModel)]="researchData.authors" #authors="ngModel" class="w-full h-9 rounded-md p-2 border border-gray-400" />
+            <div *ngIf="myForm.submitted && authors.invalid" class="text-red-500">
+                Authors is required.
+            </div>
+            <label for="title" class="text-2xl">Title</label>
+            <input id="title" name="title" type="text" required [(ngModel)]="researchData.title" #title="ngModel" class="w-full h-9 rounded-md p-2 border border-gray-400" />
+            <div *ngIf="myForm.submitted && title.invalid" class="text-red-500">
+                Title is required.
+            </div>
+            <label for="abstract"  class="text-2xl">Abstract</label>
+            <textarea id="abstract" name="abstract" [(ngModel)]="researchData.abstract" #abstract="ngModel" class="w-full h-32 rounded-md p-2 border border-gray-400" required></textarea>
+            <div *ngIf="myForm.submitted && abstract.invalid" class="text-red-500">
+                Abstract is required.
+            </div>
+            <label for="content" class="text-2xl">Content</label>
+            <textarea id="content" name="content" [(ngModel)]="researchData.content" #content="ngModel" class="w-full h-64 rounded-md p-2 border border-gray-400" required></textarea>
+            <div *ngIf="myForm.submitted && content.invalid" class="text-red-500">
+                Content is required.
+            </div>
+            <div class="flex gap-5">
+                <div class="flex flex-col gap-2">
+                    <label for="publishedDate" class="text-2xl">Published date</label>
+                    <input id="publishedDate" name="publishedDate" type="date" required [(ngModel)]="researchData.publishedDate" #publishedDate="ngModel" class="w-full h-9 rounded-md p-2 border border-gray-400" />
+                    <div *ngIf="myForm.submitted && publishedDate.invalid" class="text-red-500">
+                        Published date is required.
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label for="volume" class="text-2xl">Volume</label>
+                    <input id="volume" name="volume" type="text" required [(ngModel)]="researchData.volume" #volume="ngModel" class="w-full h-9 rounded-md p-2 border border-gray-400" />
+                    <div *ngIf="myForm.submitted && volume.invalid" class="text-red-500">
+                        Volume is required.
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label for="issue" class="text-2xl">Issue</label>
+                    <input id="issue" name="issue" type="text" required [(ngModel)]="researchData.issue" #issue="ngModel" class="w-full h-9 rounded-md p-2 border border-gray-400" />
+                    <div *ngIf="myForm.submitted && issue.invalid" class="text-red-500">
+                        Issue is required.
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label for="pages" class="text-2xl">Pages</label>
+                    <input id="pages" name="pages" type="text" required [(ngModel)]="researchData.pages" #pages="ngModel" class="w-full h-9 rounded-md p-2 border border-gray-400" />
+                    <div *ngIf="myForm.submitted && pages.invalid" class="text-red-500">
+                        Pages is required.
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label for="doi" class="text-2xl">Doi</label>
+                    <input id="doi" name="doi" type="text" required [(ngModel)]="researchData.doi" #doi="ngModel" class="w-full h-9 rounded-md p-2 border border-gray-400" />
+                    <div *ngIf="myForm.submitted && doi.invalid" class="text-red-500">
+                        Doi is required.
+                    </div>
+                </div>
             </div>
         </div>
         <ng-template #successful>
             <div class="flex flex-col justify-center items-center h-96">
-                <img src="https://cdn-icons-png.flaticon.com/512/4481/4481290.png" alt="succesfully" class="w-1/5 h-2/3">
+                <img src="/assets/successfulUpload.png" alt="succesfully" class="w-1/5 h-2/3">
                 <h1 class="text-3xl pt-14 pb-8">Research uploaded for review</h1>
             </div>
         </ng-template>
     </div>
     <div *ngIf="!isUploaded; else successfulButtons" class="w-full h-15 mx-auto flex justify-between items-center mt-5">
-        <button type="submit" [routerLink]="['/search']" class="text-2xl bg-secondary rounded-md text-white p-2 w-1/6 font-bold">Cancel</button>
-        <button type="submit" (click)="onUpload()" class="text-2xl bg-secondary rounded-md p-2 w-1/6 h-15 font-bold text-white" >Upload</button>
+        <button type="button" [routerLink]="['/my-research']" class="text-2xl bg-secondary rounded-md text-white p-2 w-1/6 font-bold">Cancel</button>
+        <button type="submit" class="text-2xl bg-secondary rounded-md p-2 w-1/6 h-15 font-bold text-white" >Upload</button>
     </div>
 
     <ng-template #successfulButtons>
         <div class="w-full h-15 mx-auto flex justify-center items-center mt-5">
-            <button [routerLink]="['/search']" type="submit" class="text-2xl bg-secondary rounded-md text-white p-2 w-1/6 font-bold">Accept</button>
+            <button [routerLink]="['/my-research']" type="button" class="text-2xl bg-secondary rounded-md text-white p-2 w-1/6 font-bold">Accept</button>
         </div>
     </ng-template>
-</div>
+</form>
