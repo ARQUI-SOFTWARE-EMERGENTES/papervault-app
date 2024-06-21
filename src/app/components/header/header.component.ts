@@ -15,9 +15,8 @@ import { Router, RouterModule } from '@angular/router';
 export class HeaderComponent {
   loggedIn: boolean;
 
-  constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {
-    const localStorage = document.defaultView?.localStorage
-    this.loggedIn = localStorage?.getItem('token') ? true : false
+  constructor(private router: Router) {
+    this.loggedIn = localStorage.getItem('token') ? true : false
   }
 
   signOut() {

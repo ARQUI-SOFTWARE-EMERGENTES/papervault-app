@@ -10,4 +10,5 @@ export interface Research {
     issue: string,
     pages: string,
     doi: string,
+    uploadedBy: string,
 }

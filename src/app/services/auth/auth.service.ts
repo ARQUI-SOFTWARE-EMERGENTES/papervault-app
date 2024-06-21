@@ -9,7 +9,7 @@ import { Register } from '../../models/register.model';
 })
 export class AuthService {
 
-  basePath = 'http://localhost:3000/api/v1/auth';
+  basePath = 'http://127.0.0.1:3000/api/v1/auth';
 
   httpOptions = {
     headers: new HttpHeaders({

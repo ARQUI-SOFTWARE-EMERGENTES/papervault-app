@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import { Injectable, afterRender } from '@angular/core';
 import { Observable, catchError, retry, throwError } from 'rxjs';
 import { Research } from '../../models/research.model';
 import { DOCUMENT } from '@angular/common';
@@ -9,15 +9,14 @@ import { DOCUMENT } from '@angular/common';
 })
 export class ResearchService {
 
-  basePath = 'http://localhost:3000/api/v1/researchs';
+  basePath = 'http://127.0.0.1:3000/api/v1/researchs';
 
   httpOptions = {}
-  constructor(private http: HttpClient, @Inject(DOCUMENT) private document: Document) {
-    const localStorage = document.defaultView?.localStorage
+  constructor(private http: HttpClient) {
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage?.getItem('token') || ''
+        'Authorization': 'Bearer ' + localStorage.getItem('token') || ''
       })
     }
   }
@@ -49,6 +48,27 @@ export class ResearchService {
 
   getById(id: any): Observable<Research> {
     return this.http.get<Research>(`${this.basePath}/${id}`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
+  getPending(): Observable<Research> {
+    return this.http.get<Research>(`${this.basePath}/status/pending`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
+  approve(id: any): Observable<any> {
+    return this.http.put(`${this.basePath}/approve/${id}`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
+  reject(id: any): Observable<any> {
+    return this.http.put(`${this.basePath}/reject/${id}`, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));
