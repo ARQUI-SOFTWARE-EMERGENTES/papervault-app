@@ -9,7 +9,7 @@
             </div>
             <div class="flex flex-col gap-5">
                 <p class="text-2xl pb-4">Approved</p>
-                <div class="bg-white w-full border rounded-md border-gray-500 p-8 flex flex-col gap-2 cursor-pointer" *ngFor="let approvedResearch of approvedResearchs">
+                <div class="bg-white w-full border rounded-md border-gray-500 p-8 flex flex-col gap-2 cursor-pointer" *ngFor="let approvedResearch of approvedResearchs" (click)="viewResearch(approvedResearch.id)">
                     <h4 class="text-2xl">{{ approvedResearch.title }}</h4>
                     <p class="text-xl">{{ approvedResearch.authors }}</p>
                     <p class="text-xl">{{ approvedResearch.journal }}</p>
@@ -17,7 +17,7 @@
             </div>
             <div class="flex flex-col gap-5">
                 <p class="text-2xl pb-4">In progress</p>
-                <div class="bg-white w-full border rounded-md border-gray-500 p-8 flex flex-col gap-2 cursor-pointer" *ngFor="let pendingResearch of pendingResearchs">
+                <div class="bg-white w-full border rounded-md border-gray-500 p-8 flex flex-col gap-2 cursor-pointer" *ngFor="let pendingResearch of pendingResearchs" (click)="viewResearch(pendingResearch.id)">
                     <h4 class="text-2xl">{{ pendingResearch.title }}</h4>
                     <p class="text-xl">{{ pendingResearch.authors }}</p>
                     <p class="text-xl">{{ pendingResearch.journal }}</p>
@@ -25,7 +25,7 @@
             </div>
             <div class="flex flex-col gap-5">
                 <p class="text-2xl pb-4">Rejected</p>
-                <div class="bg-white w-full border rounded-md border-gray-500 p-8 flex flex-col gap-2 cursor-pointer" *ngFor="let rejectedResearch of rejectedResearchs">
+                <div class="bg-white w-full border rounded-md border-gray-500 p-8 flex flex-col gap-2 cursor-pointer" *ngFor="let rejectedResearch of rejectedResearchs" (click)="viewResearch(rejectedResearch.id)">
                     <h4 class="text-2xl">{{ rejectedResearch.title }}</h4>
                     <p class="text-xl">{{ rejectedResearch.authors }}</p>
                     <p class="text-xl">{{ rejectedResearch.journal }}</p>

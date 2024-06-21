@@ -58,7 +58,7 @@
             <div class="flex">
                 <button type="submit" class="text-lg bg-secondary rounded-md px-2 py-1 mr-2 font-bold text-white" (click)="approveResearch(pendingResearch.id)">Approve</button>
                 <button type="button" class="text-lg bg-secondary rounded-md px-2 py-1 mr-2 font-bold text-white" (click)="rejectResearch(pendingResearch.id)">Reject</button>
-                <button type="button" class="text-lg bg-secondary rounded-md px-2 py-1 font-bold text-white">See paper</button>
+                <button type="button" class="text-lg bg-secondary rounded-md px-2 py-1 font-bold text-white" (click)="viewResearch(pendingResearch.id)">See paper</button>
             </div>
         </div>
     </div>

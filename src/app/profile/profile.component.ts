@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Profile } from './interface/profile';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit{
   profileData: Profile
   pendingResearchs: Research[]
 
-  constructor(private profileService: ProfileService, private researchService: ResearchService){
+  constructor(private profileService: ProfileService, private researchService: ResearchService, private router: Router){
     this.profileData = {} as Profile
     this.pendingResearchs = []
   }
@@ -61,5 +61,9 @@ export class ProfileComponent implements OnInit{
     this.researchService.reject(id).subscribe((response: any) => {
       this.pendingResearchs = this.pendingResearchs.filter((research) => research.id !== id)
     })
+  }
+
+  viewResearch(id: string) {
+    this.router.navigate(['/research', id]);
   }
 }

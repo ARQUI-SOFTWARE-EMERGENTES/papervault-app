@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { ResearchService } from '../services/research/research.service';
 import { Research } from '../models/research.model';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-my-research',
@@ -17,7 +16,7 @@ export class MyResearchComponent implements OnInit {
   pendingResearchs: Research[] = [];
   rejectedResearchs: Research[] = [];
   
-  constructor(private researchService: ResearchService) {}
+  constructor(private researchService: ResearchService, private router: Router) {}
 
   ngOnInit() {
     this.researchService.getApproved().subscribe((response: any) => {
@@ -31,6 +30,10 @@ export class MyResearchComponent implements OnInit {
     this.researchService.getRejected().subscribe((response: any) => {
       this.rejectedResearchs = response;
     });
+  }
+
+  viewResearch(id: string) {
+    this.router.navigate(['/research', id]);
   }
 
 }
