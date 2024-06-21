@@ -2,13 +2,7 @@
     <h1 class="text-left text-6xl ml-4">Search documents</h1>
     <div class="mt-16 flex flex-col gap-12 justify-center items-center w-full">
         <div class="flex gap-5 w-full">
-            <select id="search-term" class="rounded-md h-12 w-1/3 pl-6">
-                <option value="">All documents</option>
-                <option value="term1">Articles</option>
-                <option value="term2">Conference papers</option>
-                <option value="term3">Book chapters</option>
-            </select>
-            <input type="text" [(ngModel)]="query" placeholder="Keywords" class="rounded-md h-12 w-2/3 pl-6">
+            <input type="text" [(ngModel)]="query" placeholder="Keywords" class="rounded-md h-12 w-full pl-6">
         </div>
         <button (click)="search()" type="submit" class="text-2xl bg-secondary rounded-md p-2 w-1/5 h-16 font-bold text-white">Search</button>
     </div>
@@ -25,6 +19,7 @@
             <div class="w-full flex flex-col gap-5">
                 <div *ngFor="let research of researchs" class="bg-white w-full border rounded-md border-gray-500 p-8 flex flex-col gap-2 cursor-pointer" (click)="viewResearch(research.id)">
                     <h4 class="text-2xl">{{ research.title }}</h4>
+                    <p class="text-xl">{{ research.authors }}</p>
                     <p class="text-xl">{{ research.publishedDate }}</p>
                 </div>
             </div>

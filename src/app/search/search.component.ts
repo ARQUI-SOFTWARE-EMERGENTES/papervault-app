@@ -33,7 +33,7 @@ export class SearchComponent implements OnInit {
       this.isQuery = this.query.length > 0;
 
       if (this.query.length > 0) {
-        this.researchService.getAll().subscribe((response: any) => {
+        this.researchService.getAll(this.query).subscribe((response: any) => {
           this.researchs = response;
         });
       }

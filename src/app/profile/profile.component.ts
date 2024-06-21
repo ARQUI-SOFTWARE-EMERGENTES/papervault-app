@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.researchService.getPending().subscribe((response: any) => {
+    this.researchService.getRevision().subscribe((response: any) => {
       this.pendingResearchs = response
     }),
     this.profileService.getProfile().subscribe((response: any) => {

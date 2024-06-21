@@ -39,8 +39,8 @@ export class ResearchService {
         catchError(this.handleError));
   }
 
-  getAll(): Observable<Research> {
-    return this.http.get<Research>(this.basePath, this.httpOptions)
+  getAll(search: string): Observable<Research> {
+    return this.http.get<Research>(`${this.basePath}?search=${search}`, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));
@@ -53,8 +53,8 @@ export class ResearchService {
         catchError(this.handleError));
   }
 
-  getPending(): Observable<Research> {
-    return this.http.get<Research>(`${this.basePath}/status/pending`, this.httpOptions)
+  getRevision(): Observable<Research> {
+    return this.http.get<Research>(`${this.basePath}/revision`, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));
@@ -69,6 +69,27 @@ export class ResearchService {
 
   reject(id: any): Observable<any> {
     return this.http.put(`${this.basePath}/reject/${id}`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
+  getApproved(): Observable<Research> {
+    return this.http.get<Research>(`${this.basePath}/status/approved`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
+  getPending(): Observable<Research> {
+    return this.http.get<Research>(`${this.basePath}/status/pending`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
+  getRejected(): Observable<Research> {
+    return this.http.get<Research>(`${this.basePath}/status/rejected`, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));
