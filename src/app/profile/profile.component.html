@@ -61,5 +61,8 @@
                 <button type="button" class="text-lg bg-secondary rounded-md px-2 py-1 font-bold text-white" (click)="viewResearch(pendingResearch.id)">See paper</button>
             </div>
         </div>
+        <div *ngIf="pendingResearchs.length == 0">
+            <p class="text-2xl mt-5">No review researchs</p>
+        </div>
     </div>
 </div>

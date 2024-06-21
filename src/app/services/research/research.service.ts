@@ -3,6 +3,7 @@ import { Injectable, afterRender } from '@angular/core';
 import { Observable, catchError, retry, throwError } from 'rxjs';
 import { Research } from '../../models/research.model';
 import { DOCUMENT } from '@angular/common';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,15 @@ export class ResearchService {
   basePath = 'http://127.0.0.1:3000/api/v1/researchs';
 
   httpOptions = {}
-  constructor(private http: HttpClient) {
-    this.httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('token') || ''
-      })
-    }
+  constructor(private http: HttpClient, private authService: AuthService) {
+    this.authService.authStatus$.subscribe(status => {
+      this.httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token') || ''
+        })
+      }
+    });
   }
 
   handleError(error: HttpErrorResponse) {
@@ -61,14 +64,14 @@ export class ResearchService {
   }
 
   approve(id: any): Observable<any> {
-    return this.http.put(`${this.basePath}/approve/${id}`, this.httpOptions)
+    return this.http.put(`${this.basePath}/approve/${id}`, {}, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));
   }
 
   reject(id: any): Observable<any> {
-    return this.http.put(`${this.basePath}/reject/${id}`, this.httpOptions)
+    return this.http.put(`${this.basePath}/reject/${id}`, {}, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError));

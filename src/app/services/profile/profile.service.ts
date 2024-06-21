@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import { Profile } from '../../profile/interface/profile';
 import {catchError, Observable, retry, throwError} from "rxjs";
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,15 @@ export class ProfileService {
 
   httpOptions = {}
 
-  constructor(private http: HttpClient) {
-    this.httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('token') || ''
-      })
-    }
+  constructor(private http: HttpClient, private authService: AuthService) {
+    this.authService.authStatus$.subscribe(status => {
+      this.httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token') || ''
+        })
+      }
+    });
   }
 
   handleError(error: HttpErrorResponse) {

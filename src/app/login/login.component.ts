@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth/auth.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { HeaderComponent } from '../components/header/header.component';
 
 @Component({
   selector: 'app-login',
@@ -34,6 +35,7 @@ export class LoginComponent {
     this.authService.login(this.loginData).subscribe((response: any) => {
       if (response.token) {
         localStorage.setItem('token', response.token);
+        this.authService.loginSuccess();
         this.router.navigate(['/search']);
       }
     },

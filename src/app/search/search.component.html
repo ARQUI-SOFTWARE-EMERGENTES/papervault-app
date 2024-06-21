@@ -22,6 +22,10 @@
                     <p class="text-xl">{{ research.authors }}</p>
                     <p class="text-xl">{{ research.publishedDate }}</p>
                 </div>
+
+                <div *ngIf="researchs.length == 0">
+                    <p class="text-2xl mt-5">No results</p>
+                </div>
             </div>
         </div>
     </div>

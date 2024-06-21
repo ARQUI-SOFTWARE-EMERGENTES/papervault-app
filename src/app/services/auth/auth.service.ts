@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, retry, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, retry, throwError } from 'rxjs';
 import { Login } from '../../models/login.model';
 import { Register } from '../../models/register.model';
 
@@ -10,6 +10,8 @@ import { Register } from '../../models/register.model';
 export class AuthService {
 
   basePath = 'http://127.0.0.1:3000/api/v1/auth';
+  private authStatus = new BehaviorSubject<boolean>(false);
+  authStatus$ = this.authStatus.asObservable();
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -34,6 +36,15 @@ export class AuthService {
     .pipe(
       retry(2),
       catchError(this.handleError));
+  }
+
+  loginSuccess() {
+    this.authStatus.next(true);
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.authStatus.next(false);
   }
 
   register(item: Register) {
