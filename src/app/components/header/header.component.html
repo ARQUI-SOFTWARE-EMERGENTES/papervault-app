@@ -1,8 +1,9 @@
 <div class="flex justify-between items-center h-16 py-8 px-16 bg-header w-full">
-   <h1 class="text-3xl font-bold text-white">PaperVault</h1>
+   <a [routerLink]="['/search']" class="text-3xl font-bold text-white">PaperVault</a>
    <div class="flex gap-8">
-        <a [routerLink]="['/profile/1']" class="text-white text-xl font-semibold">Profile</a>
-        <a [routerLink]="['/my-research']" class="text-white text-xl font-semibold">My Research</a>
-        <a [routerLink]="['/login']" class="text-white text-xl font-semibold">Sign Out</a>
+        <a *ngIf="loggedIn" [routerLink]="['/profile']" class="text-white text-xl font-semibold">Profile</a>
+        <a *ngIf="loggedIn" [routerLink]="['/my-research']" class="text-white text-xl font-semibold">My Research</a>
+        <a *ngIf="loggedIn" (click)="signOut()" class="text-white text-xl font-semibold cursor-pointer">Sign Out</a>
+        <a *ngIf="!loggedIn" [routerLink]="['/login']" class="text-white text-xl font-semibold cursor-pointer">Login</a>
    </div>
 </div>

@@ -12,7 +12,7 @@ export const routes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path:'search', component: SearchComponent},
     { path:'upload', component: UploadComponent},
-    { path:'profile/:id', component: ProfileComponent},
+    { path:'profile', component: ProfileComponent},
     { path: 'research/:id', component: ResearchComponent },
     { path: 'my-research', component: MyResearchComponent },
     { path: '**', redirectTo: 'search'}

@@ -1,19 +1,55 @@
 <div class="flex flex-col gap-5 m-8">
     <div class="flex gap-5 bg-quaternary p-4">
-        <button (click)="goBack()" class="text-xl bg-secondary rounded-md px-4 py-2 font-bold text-white">Back to search</button>
-        <button class="text-xl bg-secondary rounded-md px-4 py-2 font-bold text-white">Download</button>
+        <button (click)="goBack()" class="text-xl bg-secondary rounded-md px-4 py-2 font-bold text-white">Go back</button>
+        <button (click)="generateReference()" class="text-xl bg-secondary rounded-md px-4 py-2 font-bold text-white">Cite this article</button>
     </div>
     <div class="p-5 bg-white rounded-md w-full flex flex-col gap-5">
-        <h2 class="text-3xl">Regional Smart City Development Focus: The South Korean National Strategic Smart City Program</h2>
-        <h3 class="text-xl">Yang, J (Yang, Jeyun) [1] ; Kwon, Y (Kwon, Youngsang) [1] , [2] ; Kim, D (Kim, Daehwan) [1] , [3]</h3>
-        <div class="flex flex-col">
-            <h3 class="text-xl">Volume 14, Issue 1</h3>
-            <h3 class="text-xl">December 2024</h3>
-            <h3 class="text-xl">Article number 8139</h3>
+        <h2 class="text-4xl">{{ research.title }}</h2>
+        <h3 class="text-2xl">{{ research.authors }}</h3>
+
+        <div>
+            <h3 class="text-xl">Journal: {{ research.journal }}</h3>
+            <h3 class="text-xl">Volume {{ research.volume }}, Issue {{ research.issue }}</h3>
+            <h3 class="text-xl">Pages {{ research.pages }}</h3>
+            <h3 class="text-xl">publishedDate: {{ research.publishedDate }}</h3>
         </div>
-        <p class="text-lg text-justify">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet consectetur adipiscing elit duis. Suspendisse faucibus interdum posuere lorem ipsum. Rutrum tellus pellentesque eu tincidunt tortor aliquam nulla facilisi. Interdum velit euismod in pellentesque massa placerat duis. Habitasse platea dictumst vestibulum rhoncus est pellentesque. Egestas dui id ornare arcu odio ut sem nulla. Sed vulputate odio ut enim blandit volutpat maecenas volutpat. Et tortor at risus viverra adipiscing at. Enim ut sem viverra aliquet eget sit amet tellus. Ante in nibh mauris cursus mattis molestie a iaculis at. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. Nulla posuere sollicitudin aliquam ultrices sagittis.
-Dictumst vestibulum rhoncus est pellentesque elit. Pellentesque adipiscing commodo elit at imperdiet dui accumsan. Et netus et malesuada fames ac. Nunc congue nisi vitae suscipit. Id interdum velit laoreet id donec ultrices tincidunt. Suscipit tellus mauris a diam maecenas sed enim. Nunc lobortis mattis aliquam faucibus. Vel pretium lectus quam id leo. Curabitur gravida arcu ac tortor dignissim. Interdum consectetur libero
-        </p>
+        
+        <div class="flex flex-col gap-2">
+            <h2 class="text-2xl">Abstract:</h2>
+            <p class="text-lg text-justify">
+                {{ research.abstract }}
+            </p>
+        </div>
+        <div class="flex flex-col gap-2">
+            <h2 class="text-2xl">Content:</h2>
+            <p class="text-lg text-justify">
+                {{ research.content }}
+            </p>
+        </div>
     </div>
+
+    <div *ngIf="reference" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full">
+          <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4 w-full">
+            <div class="sm:flex sm:items-start w-full">
+              <div class="text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                <h3 class="leading-6 text-xl text-gray-900 font-bold">
+                  Copy reference
+                </h3>
+                <div class="mt-2">
+                  <textarea class="w-full h-full">{{cite}}</textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+            <button (click)="closeReference()" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+              Close
+            </button>
+            <button (click)="copyReference()" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
+                {{ copyText }}
+            </button>
+          </div>
+        </div>
+      </div>
 </div>

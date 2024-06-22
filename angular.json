@@ -53,6 +53,8 @@
               "outputHashing": "all"
             },
             "development": {
+              "ssr": false,
+              "prerender": false,
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true

@@ -1,8 +1,6 @@
 export interface Profile {
     id: number;
     name: string;
-    lastName: string;
-    academicInstitution: string;
-    studyArea: string;
+    lastname: string;
     email: string;
 }
