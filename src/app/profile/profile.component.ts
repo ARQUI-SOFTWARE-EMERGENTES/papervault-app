@@ -1,14 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Profile } from './interface/profile';
-import {ActivatedRoute, Router} from "@angular/router";
-import {NgForm} from "@angular/forms";
+import { Router } from "@angular/router";
 import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ResearchService } from '../services/research/research.service';
 import { Research } from '../models/research.model';
-import { error } from 'console';
 import { ProfileService } from '../services/profile/profile.service';
 
 @Component({
