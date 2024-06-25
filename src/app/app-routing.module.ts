@@ -6,6 +6,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { UploadComponent } from './pages/upload/upload.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { MyResearchComponent } from './pages/my-research/my-research.component';
+import { ResearchComponent } from './pages/research/research.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -13,7 +14,7 @@ const routes: Routes = [
   { path:'search', component: SearchComponent},
   { path:'upload', component: UploadComponent},
   { path:'profile', component: ProfileComponent},
-  { path: 'research/:id', component: SearchComponent },
+  { path: 'research/:id', component: ResearchComponent },
   { path: 'my-research', component: MyResearchComponent },
   { path: '**', redirectTo: 'search'}
 ];

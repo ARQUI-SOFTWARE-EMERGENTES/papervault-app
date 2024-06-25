@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class AuthService {
-    basePath = 'http://127.0.0.1:3000/api/v1/auth';
+    basePath = 'http://34.68.253.177/api/v1/auth';
   private authStatus = new BehaviorSubject<boolean>(false);
   authStatus$ = this.authStatus.asObservable();
 

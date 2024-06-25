@@ -1,0 +1,21 @@
+<div class="flex flex-col gap-5 m-8">
+    <div class="flex gap-5 bg-quaternary p-4">
+        <button (click)="goBack()" class="text-xl bg-secondary rounded-md px-4 py-2 font-bold text-white">Back to search</button>
+    </div>
+    <div class="p-5 bg-white rounded-md w-full flex flex-col gap-5">
+        <h2 class="text-3xl">{{ research.title }}</h2>
+        <h3 class="text-xl">{{ research.publishedDate }}</h3>
+        <div class="flex flex-col gap-2">
+            <h2 class="text-2xl">Abstract:</h2>
+            <p class="text-lg text-justify">
+                {{ research.abstract }}
+            </p>
+        </div>
+        <div class="flex flex-col gap-2">
+            <h2 class="text-2xl">Content:</h2>
+            <p class="text-lg text-justify">
+                {{ research.content }}
+            </p>
+        </div>
+    </div>
+</div>

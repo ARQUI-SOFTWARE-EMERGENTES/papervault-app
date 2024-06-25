@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ResearchService {
-    basePath = 'http://127.0.0.1:3000/api/v1/researchs';
+    basePath = 'http://34.68.253.177/api/v1/researchs';
 
   httpOptions = {}
   constructor(private http: HttpClient, private authService: AuthService) {

@@ -15,6 +15,7 @@ import { AuthService } from 'src/services/auth/auth.service';
 import { ProfileService } from 'src/services/profile/profile.service';
 import { ResearchService } from 'src/services/research/research.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ResearchComponent } from './pages/research/research.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     ProfileComponent,
     MyResearchComponent,
     UploadComponent,
+    ResearchComponent,
   ],
   imports: [
     BrowserModule,
