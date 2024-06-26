@@ -12,6 +12,9 @@ import { Location } from '@angular/common';
 export class ResearchComponent implements OnInit {
   research: Research;
   id: string | null;
+  reference: boolean = false;
+  cite: string = '';
+  copyText: string = 'Copy'
 
   constructor(private location: Location, private researchService: ResearchService, private route: ActivatedRoute, private router: Router) {
     this.research = {} as Research;
@@ -25,10 +28,26 @@ export class ResearchComponent implements OnInit {
 
     this.researchService.getById(this.id).subscribe((response: any) => {
       this.research = response;
+      this.cite = `${response.authors}. (${response.publishedDate}). ${response.title}. ${response.journal}, ${response.volume}(${response.issue}), ${response.pages}. ${response.doi}`;
     });
   }
 
   goBack() {
     this.location.back();
+  }
+
+  generateReference() {
+    this.reference = true;
+  }
+
+  closeReference() {
+    this.reference = false;
+    this.copyText = 'Copy';
+  }
+
+  copyReference() {
+    navigator.clipboard.writeText(this.cite).then(() => {
+      this.copyText = 'Copied';
+    });
   }
 }
